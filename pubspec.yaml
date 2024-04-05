@@ -43,6 +43,8 @@ dependencies:
   equatable: ^2.0.5
   package_info_plus: ^5.0.1
   path: ^1.9.0
+  dropdown_button2: ^2.3.9
+  country_code_picker: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -64,11 +66,19 @@ flutter:
     - assets/svgs/
     # localization
     - assets/translations/
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat-Light.ttf
+          weight: 300
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

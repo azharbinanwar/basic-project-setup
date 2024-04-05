@@ -54,4 +54,13 @@ abstract class AppTheme {
   TextButtonThemeData get textButtonTheme;
 
   BottomNavigationBarThemeData get bottomNavigationBarTheme;
+
+  InputDecorationTheme get inputDecorationTheme;
+
+  TextTheme get textTheme;
+
+  CheckboxThemeData get checkboxTheme;
+
+  // theme extensions
+  ThemeExtension get appColorExtension;
 }

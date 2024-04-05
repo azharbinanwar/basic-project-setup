@@ -1,6 +1,6 @@
+import 'package:basic_project_template/core/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:basic_project_template/core/extensions/build_context_extension.dart';
 
 extension WidgetExtension on Widget {
   Widget paddingAll(double value) => Padding(padding: EdgeInsets.all(value), child: this);
@@ -39,13 +39,19 @@ extension WidgetExtension on Widget {
 
   Widget center() => Center(child: this);
 
+  Widget fit() => FittedBox(child: this);
+
+  Widget materialized() => Material(child: this);
+
   Widget safeArea() => SafeArea(child: this);
 
   // Widget centerHorizontal() => Center(child: this);
 
-  Widget align({AlignmentGeometry alignment = Alignment.center}) => Align(alignment: alignment, child: this);
+  Widget align([AlignmentGeometry alignment = Alignment.center]) => Align(alignment: alignment, child: this);
 
   Widget expanded({int flex = 1}) => Expanded(flex: flex, child: this);
+
+  Widget background(Color color) => Material(color: color, child: this);
 
   Widget constrains({
     double minWidth = 0.0,
@@ -86,6 +92,14 @@ extension WidgetExtension on Widget {
       padding: padding,
       scrollDirection: scrollDirection,
       child: scrollDirection == Axis.vertical ? Column(children: items) : Row(children: items),
+    );
+  }
+
+  Widget scrollable({Axis scrollDirection = Axis.vertical, EdgeInsets padding = EdgeInsets.zero}) {
+    return SingleChildScrollView(
+      scrollDirection: scrollDirection,
+      padding: padding,
+      child: this,
     );
   }
 }

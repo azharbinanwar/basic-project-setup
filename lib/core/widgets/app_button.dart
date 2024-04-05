@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:basic_project_template/core/extensions/build_context_extension.dart';
+import 'package:flutter/material.dart';
 
-const double _defaultButtonHeight = 48.0;
-const BorderRadius _borderRadius = BorderRadius.all(Radius.circular(8.0));
+const double _defaultButtonHeight = 52.0;
+const BorderRadius _borderRadius = BorderRadius.all(Radius.circular(40.0));
 
 class AppButton extends StatelessWidget {
   final Widget _child;
@@ -48,7 +48,6 @@ class AppButton extends StatelessWidget {
           height: height,
           width: width,
           elevation: elevation,
-          background: background,
           foregroundColor: foregroundColor,
           onPressed: onPressed,
           constraints: constraints,
@@ -229,7 +228,7 @@ class _OutlineButton extends StatelessWidget {
     return OutlinedButton(
       style: ButtonStyle(
         maximumSize: MaterialStateProperty.all<Size>(Size(width, height)),
-        minimumSize: MaterialStateProperty.all<Size>(Size(width, _defaultButtonHeight)),
+        minimumSize: MaterialStateProperty.all<Size>(Size(width, height)),
         side: MaterialStateProperty.all(BorderSide(color: borderColor ?? context.primary)),
         padding: padding == null ? null : MaterialStateProperty.all(padding),
         elevation: MaterialStateProperty.all(elevation),
@@ -246,7 +245,6 @@ class _TextButton extends StatelessWidget {
   final double? height, width;
   final double? elevation;
   final VoidCallback? onPressed;
-  final Color? background;
   final Color? foregroundColor;
   final Widget child;
   final BoxConstraints? constraints;
@@ -257,7 +255,6 @@ class _TextButton extends StatelessWidget {
     this.width,
     this.elevation,
     this.onPressed,
-    this.background,
     this.constraints,
     this.foregroundColor,
     required this.child,

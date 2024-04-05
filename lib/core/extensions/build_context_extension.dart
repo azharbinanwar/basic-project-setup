@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:basic_project_template/config/theme/extensions/app_color_extension.dart';
+import 'package:basic_project_template/core/extensions/widget_extension.dart';
 import 'package:flutter/material.dart';
 
 extension BuildContextEntension<T> on BuildContext {
@@ -43,11 +45,11 @@ extension BuildContextEntension<T> on BuildContext {
 
   TextStyle get labelLarge => Theme.of(this).textTheme.labelLarge!;
 
-  TextStyle get bodySmall => Theme.of(this).textTheme.bodySmall!;
+  TextStyle get bodySmall => Theme.of(this).textTheme.bodySmall!.copyWith();
 
   TextStyle get titleTextStyle => Theme.of(this).appBarTheme.titleTextStyle!;
 
-  TextStyle get bodyExtraSmall => bodySmall.copyWith(fontSize: 10, height: 1.6, letterSpacing: .5);
+  TextStyle get bodyExtraSmall => bodySmall.copyWith();
 
   TextStyle get bodyLarge => Theme.of(this).textTheme.bodyLarge!;
 
@@ -70,6 +72,8 @@ extension BuildContextEntension<T> on BuildContext {
   Color get primary => Theme.of(this).colorScheme.primary;
 
   Color get onPrimary => Theme.of(this).colorScheme.onPrimary;
+
+  Color get primaryLight => Theme.of(this).extension<AppColorExtension>()!.primaryLight;
 
   Color get primaryContainer => Theme.of(this).colorScheme.primaryContainer;
 
@@ -109,6 +113,12 @@ extension BuildContextEntension<T> on BuildContext {
 
   Color get iconColor => Theme.of(this).iconTheme.color!;
 
+  Color get inputFieldIconColor => Theme.of(this).extension<AppColorExtension>()!.inputFieldIconColor;
+
+  bool get isLandscape => MediaQuery.of(this).orientation == Orientation.landscape;
+
+  Orientation get orientation => MediaQuery.of(this).orientation;
+
   Future<T?> showBottomSheet(
     Widget child, {
     bool isScrollControlled = true,
@@ -144,6 +154,72 @@ extension BuildContextEntension<T> on BuildContext {
   }
 
   BottomNavigationBarThemeData get bottomNavigationBarTheme => Theme.of(this).bottomNavigationBarTheme;
+
+  Future<Object?> showAppGeneralDialog({
+    required final String title,
+    final List<Widget> actions = const [],
+    required Widget child,
+    final EdgeInsetsGeometry padding = const EdgeInsets.all(16.0),
+  }) {
+    // add 8 points between actions
+    List<Widget> userActions =
+        actions.length <= 1 ? actions : actions.map((e) => Padding(padding: const EdgeInsets.symmetric(horizontal: 4.0), child: e)).toList();
+    return showGeneralDialog(
+      context: this,
+      barrierColor: primary.withOpacity(0.5),
+      pageBuilder: (BuildContext context, _, __) {
+        return ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: min(width * .9, 500.0)),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Material(
+              color: context.theme.canvasColor,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    height: kToolbarHeight,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(width: 48.0),
+                        Expanded(
+                          child: Text(
+                            title,
+                            textAlign: TextAlign.center,
+                            style: context.appBarTheme.titleTextStyle,
+                          ),
+                        ),
+                        IconButton(
+                          splashRadius: 20.0,
+                          icon: Icon(Icons.close, color: context.primary),
+                          onPressed: Navigator.of(context).pop,
+                        )
+                      ],
+                    ),
+                  ),
+                  // const SizedBox(height: 8.0),
+                  Padding(
+                    padding: padding,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        child,
+                        if (userActions.isNotEmpty) ...{
+                          const SizedBox(height: 16.0),
+                          Row(mainAxisAlignment: MainAxisAlignment.center, children: userActions).fit()
+                        },
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ).center();
+      },
+    );
+  }
 
 // Future<bool?> showToast(String message) {
 //   return Fluttertoast.showToast(

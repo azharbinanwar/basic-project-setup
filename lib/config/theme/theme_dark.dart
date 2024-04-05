@@ -1,4 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:basic_project_template/config/theme/extensions/app_color_extension.dart';
+import 'package:basic_project_template/config/theme/typography.dart';
+import 'package:basic_project_template/core/constants/app_dimens.dart';
+import 'package:basic_project_template/gen/fonts.gen.dart';
+import 'package:flutter/material.dart' hide Typography;
 
 import 'app_theme.dart';
 
@@ -8,6 +12,7 @@ class ThemeDark extends AppTheme {
         appBarTheme: appBarTheme,
         tabBarTheme: tabBarTheme,
         colorScheme: colorScheme,
+        fontFamily: FontFamily.montserrat,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
         useMaterial3: false,
         elevatedButtonTheme: elevatedButtonTheme,
@@ -21,9 +26,9 @@ class ThemeDark extends AppTheme {
           shadowColor: shadow,
         ),
         bottomNavigationBarTheme: bottomNavigationBarTheme,
-        textTheme: const TextTheme(
-          headlineMedium: TextStyle(color: Colors.white, fontSize: 38.0),
-        ),
+        textTheme: textTheme,
+        inputDecorationTheme: inputDecorationTheme,
+        extensions: [appColorExtension],
       );
 
   @override
@@ -49,19 +54,20 @@ class ThemeDark extends AppTheme {
 
   @override
   AppBarTheme get appBarTheme => AppBarTheme(
-        backgroundColor: appbarColor,
-        elevation: 0.0,
-        iconTheme: const IconThemeData(color: Colors.white),
-        titleTextStyle: const TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.normal),
-      );
+      backgroundColor: appbarColor,
+      elevation: 0.0,
+      centerTitle: true,
+      iconTheme: const IconThemeData(color: Colors.white),
+      titleTextStyle: textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w600, fontSize: 18.0));
 
   @override
   TabBarTheme get tabBarTheme => TabBarTheme(
         labelColor: primary,
-        overlayColor: MaterialStateProperty.all<Color>(primary.withOpacity(0.1)),
-        unselectedLabelColor: Colors.white,
-        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
-        indicator: UnderlineTabIndicator(borderSide: BorderSide(color: primary, width: 2.0)),
+        unselectedLabelColor: const Color(0xffe7e7e7),
+        labelStyle: textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
+        indicatorColor: primary,
+        indicator: UnderlineTabIndicator(borderSide: BorderSide(color: primary, width: 1.5)),
       );
 
   @override
@@ -117,7 +123,10 @@ class ThemeDark extends AppTheme {
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(primary),
           foregroundColor: MaterialStateProperty.all<Color>(onPrimary),
-          shape: MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius))),
+          textStyle: MaterialStateProperty.all<TextStyle>(textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
+          ),
         ),
       );
 
@@ -125,7 +134,10 @@ class ThemeDark extends AppTheme {
   TextButtonThemeData get textButtonTheme => TextButtonThemeData(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(primary),
-          shape: MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius))),
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
+          ),
+          textStyle: MaterialStateProperty.all<TextStyle>(textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
         ),
       );
 
@@ -133,8 +145,11 @@ class ThemeDark extends AppTheme {
   OutlinedButtonThemeData get outlinedButtonTheme => OutlinedButtonThemeData(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(primary),
-          shape: MaterialStateProperty.all<OutlinedBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius))),
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
+          ),
           side: MaterialStateProperty.all<BorderSide>(BorderSide(color: primary)),
+          textStyle: MaterialStateProperty.all<TextStyle>(textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
         ),
       );
 
@@ -151,4 +166,56 @@ class ThemeDark extends AppTheme {
 
   @override
   Color get appbarColor => const Color(0xff1C2834);
+
+  @override
+  InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
+        iconColor: inputFieldIconColor,
+        contentPadding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: inputFieldIconColor, width: 1.0),
+          borderRadius: BorderRadius.circular(AppDimens.inputFieldRadius),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: inputFieldIconColor, width: 1.0),
+          borderRadius: BorderRadius.circular(AppDimens.inputFieldRadius),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: error, width: 1.0),
+          borderRadius: BorderRadius.circular(AppDimens.inputFieldRadius),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: error, width: 1.0),
+          borderRadius: BorderRadius.circular(AppDimens.inputFieldRadius),
+        ),
+      );
+
+  @override
+  TextTheme get textTheme => Typography.dark;
+
+  @override
+  CheckboxThemeData get checkboxTheme => CheckboxThemeData(
+        side: const BorderSide(color: Colors.grey, width: 1.0),
+        fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) return Colors.grey;
+          return primary;
+        }),
+        checkColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) return Colors.grey;
+          return onPrimary;
+        }),
+        overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) return Colors.grey;
+          return primary.withOpacity(0.1);
+        }),
+      );
+
+  @override
+  ThemeExtension<ThemeExtension> get appColorExtension => AppColorExtension(
+        inputFieldIconColor: inputFieldIconColor,
+        primaryLight: primaryLight,
+      );
+
+  Color get inputFieldIconColor => const Color(0xffA1A1A1);
+
+  Color get primaryLight => const Color(0xffF7EBFA);
 }

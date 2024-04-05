@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:basic_project_template/config/routes/routes.gr.dart';
 import 'package:basic_project_template/core/services/logger/logger.dart';
+import 'package:flutter/material.dart';
 
 part 'auto_router_observer.dart';
 
@@ -54,7 +54,7 @@ class AppRouter extends $AppRouter {
           page: SettingsEmptyRoute.page,
           path: _settings,
           children: [
-            AutoRoute(page: SettingsRoute.page, path: ''),
+            AutoRoute(page: SettingsRoute.page, initial: true),
             AutoRoute(page: LocalizationRoute.page, path: _language),
             AutoRoute(page: ThemeRoute.page, path: _theme),
           ],
