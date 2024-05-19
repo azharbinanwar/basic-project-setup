@@ -1,16 +1,37 @@
-# basicprojectsetup
+# Flutter basic structure
 
 A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Sure, here's a simple README file with the provided command setup:
 
-A few resources to get you started if this is your first Flutter project:
+# Flutter Project Setup
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Initial Setup
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clean and get dependencies:
+ ```
+flutter clean
+flutter pub get
+```
+
+2. Run build runner:
+```
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+3. Run build runner with watch:
+
+```
+flutter pub run build_runner watch build --delete-conflicting-outputs
+```
+
+## Build Commands
+
+- To create a release build:
+```
+flutter build apk --release
+```
+
+Feel free to customize and expand upon this setup as needed for your Flutter project.
