@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart' hide Typography;
 import 'package:basic_project_template/config/theme/app_theme.dart';
 import 'package:basic_project_template/config/theme/extensions/app_color_extension.dart';
 import 'package:basic_project_template/config/theme/typography.dart';
 import 'package:basic_project_template/core/constants/app_dimens.dart';
 import 'package:basic_project_template/gen/fonts.gen.dart';
+import 'package:flutter/material.dart' hide Typography;
 
 class ThemeLight extends AppTheme {
   @override
@@ -21,6 +21,7 @@ class ThemeLight extends AppTheme {
         canvasColor: canvasColor,
         cardTheme: CardTheme(
           color: cardColor,
+          elevation: 10.0,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
           shadowColor: shadow,
         ),
@@ -110,7 +111,7 @@ class ThemeLight extends AppTheme {
   Color get cardColor => Colors.white;
 
   @override
-  Color get shadow => Colors.grey[300]!;
+  Color get shadow => Colors.grey.withOpacity(0.35);
 
   @override
   Color get scaffoldBackgroundColor => Colors.white;
@@ -120,36 +121,36 @@ class ThemeLight extends AppTheme {
 
   @override
   ElevatedButtonThemeData get elevatedButtonTheme => ElevatedButtonThemeData(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(primary),
-          textStyle: MaterialStateProperty.all<TextStyle>(textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
-          foregroundColor: MaterialStateProperty.all<Color>(onPrimary),
-          shape: MaterialStateProperty.all<OutlinedBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
-          ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: primary,
+          disabledBackgroundColor: Colors.grey,
+          disabledForegroundColor: Colors.white,
+          textStyle: textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500),
+          foregroundColor: onPrimary,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
         ),
       );
 
   @override
   TextButtonThemeData get textButtonTheme => TextButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(primary),
-          shape: MaterialStateProperty.all<OutlinedBorder>(
+          foregroundColor: WidgetStateProperty.all<Color>(primary),
+          shape: WidgetStateProperty.all<OutlinedBorder>(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
           ),
-          textStyle: MaterialStateProperty.all<TextStyle>(textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
+          textStyle: WidgetStateProperty.all<TextStyle>(textTheme.titleMedium!),
         ),
       );
 
   @override
   OutlinedButtonThemeData get outlinedButtonTheme => OutlinedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(primary),
-          shape: MaterialStateProperty.all<OutlinedBorder>(
+          foregroundColor: WidgetStateProperty.all<Color>(primary),
+          shape: WidgetStateProperty.all<OutlinedBorder>(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(buttonRadius)),
           ),
-          side: MaterialStateProperty.all<BorderSide>(BorderSide(color: primary)),
-          textStyle: MaterialStateProperty.all<TextStyle>(textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
+          side: WidgetStateProperty.all<BorderSide>(BorderSide(color: primary)),
+          textStyle: WidgetStateProperty.all<TextStyle>(textTheme.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
         ),
       );
 
@@ -170,6 +171,7 @@ class ThemeLight extends AppTheme {
   @override
   InputDecorationTheme get inputDecorationTheme => InputDecorationTheme(
         iconColor: inputFieldIconColor,
+        hintStyle: textTheme.bodyMedium!.copyWith(color: inputFieldIconColor),
         contentPadding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: inputFieldIconColor, width: 1.0),
@@ -195,16 +197,16 @@ class ThemeLight extends AppTheme {
   @override
   CheckboxThemeData get checkboxTheme => CheckboxThemeData(
         side: const BorderSide(color: Colors.grey, width: 1.0),
-        fillColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) return Colors.grey;
+        fillColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) return Colors.grey;
           return primary;
         }),
-        checkColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) return Colors.grey;
+        checkColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) return Colors.grey;
           return onPrimary;
         }),
-        overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) return Colors.grey;
+        overlayColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) return Colors.grey;
           return primary.withOpacity(0.1);
         }),
       );
@@ -215,7 +217,7 @@ class ThemeLight extends AppTheme {
         primaryLight: primaryLight,
       );
 
-  Color get inputFieldIconColor => const Color(0xffA1A1A1);
+  Color get inputFieldIconColor => const Color(0xffB7B7B7);
 
   Color get primaryLight => const Color(0xffF7EBFA);
 }
