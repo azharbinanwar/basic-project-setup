@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 part 'auto_router_observer.dart';
 
 @AutoRouterConfig()
-class AppRouter extends $AppRouter {
+class AppRouter extends RootStackRouter {
   /// make all strings private because we don't need to access them outside of this file
   /// welcome
   static const _initialLocalization = '/initial-localization';
