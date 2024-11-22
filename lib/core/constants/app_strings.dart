@@ -78,4 +78,5 @@ class AppStrings {
   static const loginWithAnotherWay = 'loginWithAnotherWay';
   static const healthEducation = 'healthEducation';
   static const seeAll = 'seeAll';
+  static const retry = 'retry';
 }
