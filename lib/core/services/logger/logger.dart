@@ -1,15 +1,17 @@
 import 'package:logger/logger.dart';
 
 class _CustomLogger extends LogPrinter {
-  final dynamic className;
+  dynamic className;
 
   _CustomLogger(this.className);
+
+  _CustomLogger.only();
 
   @override
   List<String> log(LogEvent event) {
     String? emoji = PrettyPrinter.defaultLevelEmojis[event.level];
     AnsiColor? color = PrettyPrinter.defaultLevelColors[event.level];
-
+    if (className == null) return [color!('$emoji ${event.message}')];
     return [color!('$emoji $className - ${event.message}')];
   }
 }
@@ -17,9 +19,12 @@ class _CustomLogger extends LogPrinter {
 class Log {
   /// info level
   Log(final dynamic runtimeType, dynamic message) {
-    Logger(printer: _CustomLogger(runtimeType)).i(
-      message,
-    );
+    Logger(printer: _CustomLogger(runtimeType)).i(message);
+  }
+
+  /// Log only
+  Log.o(dynamic message) {
+    Logger(printer: _CustomLogger.only()).i(message);
   }
 
   /// debug level
