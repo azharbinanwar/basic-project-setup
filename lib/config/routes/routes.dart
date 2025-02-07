@@ -12,16 +12,16 @@ class AppRouter extends RootStackRouter {
   static const _initialLocalization = '/initial-localization';
 
   /// auth
-  static const String _login = '/login';
-  static const String _editProfile = '/edit-profile';
-
-  static const String _signUp = '/sign-up';
-
-  static const String _forgetPassword = '/forget-password';
-  static const String _resetPassword = 'reset-password';
-
-  /// dashboard
-  static const String _dashboard = '/dashboard';
+  // static const String _login = '/login';
+  // static const String _editProfile = '/edit-profile';
+  //
+  // static const String _signUp = '/sign-up';
+  //
+  // static const String _forgetPassword = '/forget-password';
+  // static const String _resetPassword = 'reset-password';
+  //
+  // / dashboard
+  // static const String _dashboard = '/dashboard';
   static const String _home = '/home'; // tab
 
   /// settings
@@ -30,11 +30,11 @@ class AppRouter extends RootStackRouter {
   static const String _theme = 'theme';
 
   /// help and support
-  static const String _helpAndSupport = '/help-and-support';
-  static const String _aboutUs = 'about-us';
-  static const String _privacyPolicy = 'privacy-policy';
-  static const String _howToUse = 'how-to-use';
-  static const String _termsAndConditions = 'terms-and-conditions';
+  // static const String _helpAndSupport = '/help-and-support';
+  // static const String _aboutUs = 'about-us';
+  // static const String _privacyPolicy = 'privacy-policy';
+  // static const String _howToUse = 'how-to-use';
+  // static const String _termsAndConditions = 'terms-and-conditions';
 
   /// [RouteType.adaptive] will use adaptive page transition
   /// [RoutType.cupertino] will use IOS default page transition

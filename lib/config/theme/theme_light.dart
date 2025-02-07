@@ -11,7 +11,7 @@ class ThemeLight extends AppTheme {
         appBarTheme: appBarTheme,
         tabBarTheme: tabBarTheme,
         colorScheme: colorScheme,
-        fontFamily: FontFamily.montserrat,
+        fontFamily: FontFamily.outfit,
         scaffoldBackgroundColor: scaffoldBackgroundColor,
         useMaterial3: false,
         elevatedButtonTheme: elevatedButtonTheme,
@@ -78,7 +78,7 @@ class ThemeLight extends AppTheme {
   Color get onPrimary => Colors.white;
 
   @override
-  Color get primaryContainer => primary.withOpacity(0.1);
+  Color get primaryContainer => primary.withValues(alpha: 255 * 0.1);
 
   @override
   Color get onPrimaryContainer => primary;
@@ -90,7 +90,7 @@ class ThemeLight extends AppTheme {
   Color get onSecondary => Colors.white;
 
   @override
-  Color get secondaryContainer => secondary.withOpacity(0.5);
+  Color get secondaryContainer => secondary.withValues(alpha: 255 * 0.5);
 
   @override
   Color get onSecondaryContainer => Colors.white;
@@ -111,7 +111,7 @@ class ThemeLight extends AppTheme {
   Color get cardColor => Colors.white;
 
   @override
-  Color get shadow => Colors.grey.withOpacity(0.35);
+  Color get shadow => Colors.grey.withValues(alpha: 255 * 0.35);
 
   @override
   Color get scaffoldBackgroundColor => Colors.white;
@@ -207,7 +207,7 @@ class ThemeLight extends AppTheme {
         }),
         overlayColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
           if (states.contains(WidgetState.disabled)) return Colors.grey;
-          return primary.withOpacity(0.1);
+          return primary.withValues(alpha: 255 * 0.1);
         }),
       );
 

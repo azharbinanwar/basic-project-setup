@@ -7,7 +7,6 @@ class _DropDownTextFormField extends StatelessWidget {
   final String? hintText;
 
   _DropDownTextFormField({
-    super.key,
     required this.items,
     this.onChanged,
     this.hintText,
@@ -38,7 +37,7 @@ class _DropDownTextFormField extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: (i == items.length - 1)
                       ? null
-                      : BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey.withOpacity(0.3)))),
+                      : BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey.withValues(alpha: 255 * 0.3)))),
                   child: ListTile(leading: item.icon, title: Text(context.tr(item.label))),
                 ),
               );

@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:basic_project_template/config/routes/routes.gr.dart';
 import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
-import 'package:basic_project_template/core/extensions/build_context_extension.dart';
-import 'package:basic_project_template/core/extensions/widget_extension.dart';
 import 'package:basic_project_template/core/widgets/app_button.dart';
 import 'package:basic_project_template/core/widgets/app_image.dart';
 import 'package:basic_project_template/features/localization/presentation/bloc/localizations_cubit.dart';
 import 'package:basic_project_template/gen/assets.gen.dart';
+import 'package:extensions_plus/extensions_plus.dart';
 
 @RoutePage()
 class InitialLocalizationPage extends StatelessWidget {
@@ -20,13 +19,7 @@ class InitialLocalizationPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          AppImage.asset(
-            Assets.images.initialChooseLanguageBg.path,
-            height: context.height,
-            width: context.width,
-            fit: BoxFit.cover,
-          ),
-          Positioned.fill(child: ColoredBox(color: context.primary.withOpacity(0.7))),
+          Positioned.fill(child: ColoredBox(color: context.primary.withValues(alpha: 255 * 0.7))),
           SizedBox(
             width: context.width,
             height: context.height,
@@ -41,7 +34,7 @@ class InitialLocalizationPage extends StatelessWidget {
                     children: [
                       AppImage.svg(Assets.svgs.appOutlineLogo, height: 48.0),
                       const SizedBox(height: 12.0),
-                      Text('iDoc', style: context.titleLarge.copyWith(fontWeight: FontWeight.w900, color: context.onPrimary)),
+                      Text(AppStrings.appName, style: context.titleLarge!.copyWith(fontWeight: FontWeight.w900, color: context.onPrimary)),
                     ],
                   ).center(),
                 ),
@@ -80,9 +73,9 @@ class InitialLocalizationPage extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        'iDoc 2023',
+                        '${AppStrings.appName} ${DateTime.now().year}',
                         textAlign: TextAlign.center,
-                        style: context.bodySmall.copyWith(color: context.onPrimary),
+                        style: context.bodySmall?.copyWith(color: context.onPrimary),
                       )
                     ],
                   ),

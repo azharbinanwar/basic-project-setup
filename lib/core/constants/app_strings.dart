@@ -1,4 +1,6 @@
 class AppStrings {
+  static const appName = 'Flutter App';
+  static const welcomeToApp = 'Welcome to $appName';
   static const english = 'english';
   static const arabic = 'arabic';
   static const language = 'language';
@@ -79,4 +81,5 @@ class AppStrings {
   static const healthEducation = 'healthEducation';
   static const seeAll = 'seeAll';
   static const retry = 'retry';
+  static const home = 'Home';
 }

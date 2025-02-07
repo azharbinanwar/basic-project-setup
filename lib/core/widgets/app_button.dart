@@ -1,4 +1,4 @@
-import 'package:basic_project_template/core/extensions/build_context_extension.dart';
+import 'package:extensions_plus/extensions_plus.dart';
 import 'package:flutter/material.dart';
 
 const double _defaultButtonHeight = 52.0;
@@ -122,6 +122,8 @@ class AppButton extends StatelessWidget {
     final VoidCallback? onPressed,
     final bool? isProcessing,
     final BorderRadius? borderRadius,
+    final Color? foregroundColor,
+    final BoxConstraints? constraints,
   }) : _child = _IconButton(
           height: height,
           width: width,
@@ -131,6 +133,8 @@ class AppButton extends StatelessWidget {
           isProcessing: isProcessing ?? false,
           borderRadius: borderRadius,
           icon: icon,
+          foregroundColor: foregroundColor,
+          constraints: constraints,
           child: child,
         );
 
@@ -437,7 +441,7 @@ class _TextButton extends StatelessWidget {
         shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: borderRadius)),
         elevation: WidgetStateProperty.all(elevation),
         foregroundColor: WidgetStateProperty.all<Color>(foregroundColor ?? context.primary),
-        textStyle: WidgetStateProperty.all<TextStyle>(context.titleMedium.copyWith(fontWeight: FontWeight.w500)),
+        textStyle: WidgetStateProperty.all<TextStyle>(context.titleMedium!.copyWith(fontWeight: FontWeight.w500)),
       ),
       onPressed: onPressed,
       child: isProcessing ? _CircularProgressIndicator(height: height! * 0.7, color: context.primary) : child,

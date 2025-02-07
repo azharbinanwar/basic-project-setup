@@ -5,9 +5,9 @@ import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-@LazySingleton()
+// @LazySingleton()
 class AppDatabaseService {
-  static const String _db = 'idoc.db';
+  static const String _db = 'app.db';
   final int _version = 1;
 
   final _tableName = 'any_table';

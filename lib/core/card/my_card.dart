@@ -1,4 +1,4 @@
-import 'package:basic_project_template/core/extensions/build_context_extension.dart';
+import 'package:extensions_plus/extensions_plus.dart';
 import 'package:flutter/material.dart';
 
 enum _MyCardType { defaultCard, primary, outline }
@@ -132,8 +132,8 @@ class _MyDefaultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// go with passed other else go with conditional one
-    final Color? cardColor = color ?? (type == _MyCardType.primary ? context.primary.withOpacity(0.05) : null);
-    Border? newBorder = border ?? (_MyCardType.outline == type ? Border.all(color: Colors.grey.withOpacity(0.2)) : null);
+    final Color? cardColor = color ?? (type == _MyCardType.primary ? context.primary.withValues(alpha: 255 * 0.05) : null);
+    Border? newBorder = border ?? (_MyCardType.outline == type ? Border.all(color: Colors.grey.withValues(alpha: 255 * 0.16)) : null);
     return Padding(
       padding: margin,
       child: InkWell(
@@ -149,7 +149,7 @@ class _MyDefaultCard extends StatelessWidget {
             color: cardColor ?? context.cardColor,
             boxShadow: [
               BoxShadow(
-                color: elevation == 0 ? Colors.transparent : shadowColor ?? context.shadow.withOpacity(0.2),
+                color: elevation == 0 ? Colors.transparent : shadowColor ?? context.shadow.withValues(alpha: 255 * 0.2),
                 blurRadius: elevation.toDouble(),
                 spreadRadius: 0.0,
                 offset: Offset.zero,
