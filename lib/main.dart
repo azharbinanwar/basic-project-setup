@@ -32,10 +32,15 @@ Future<void> main() async {
   await configureDependencies();
 
   /// setup language
-  LocalizationsCubit localizationCubit = sl<LocalizationsCubit>()..init();
+  LocalizationsCubit localizationCubit = sl<LocalizationsCubit>()
+    ..init();
 
   /// initialize hydrated bloc
-  HydratedBloc.storage = await HydratedStorage.build(storageDirectory: kIsWeb ? HydratedStorage.webStorageDirectory : await getTemporaryDirectory());
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorageDirectory.web
+        : HydratedStorageDirectory((await getTemporaryDirectory()).path),
+  );
   runApp(
     EasyLocalization(
       supportedLocales: localizationCubit.state.map((e) => e.locale).toList(),

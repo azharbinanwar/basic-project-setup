@@ -49,3 +49,6 @@ app.*.map.json
 *.g.dart
 *.lock
 
+# FVM Version Cache
+.fvm/
+.fvmrc
