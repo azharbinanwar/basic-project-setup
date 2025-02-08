@@ -7,6 +7,7 @@ import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/core/services/services/package_info/package_info_service.dart';
 import 'package:basic_project_template/features/settings/presentation/widgets/setting_tile.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 
 @RoutePage(name: 'SettingsEmptyRoute')
 class SettingsRouterEmptyRoute extends AutoRouter {
@@ -29,12 +30,12 @@ class SettingsPage extends StatelessWidget {
           children: [
             SettingTile(
               title: context.tr(AppStrings.language),
-              // leading: Icon(LineIcons.language, color: context.primary),
+              leading: Icon(LucideIcons.languages, color: context.primary),
               onTap: () => context.pushRoute(LocalizationRoute()),
             ),
             SettingTile(
               title: context.tr(AppStrings.darkMode),
-              // leading: Icon(LineIcons.sun, color: context.primary),
+              leading: Icon(LucideIcons.sun, color: context.primary),
               onTap: () => context.pushRoute(const ThemeRoute()),
             ),
             const SizedBox(height: 48.0),
