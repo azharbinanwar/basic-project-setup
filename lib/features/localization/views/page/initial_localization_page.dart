@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:basic_project_template/features/localization/views/bloc/localizations_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:basic_project_template/config/routes/routes.gr.dart';
@@ -6,7 +7,6 @@ import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/core/widgets/app_button.dart';
 import 'package:basic_project_template/core/widgets/app_image.dart';
-import 'package:basic_project_template/features/localization/presentation/bloc/localizations_cubit.dart';
 import 'package:basic_project_template/gen/assets.gen.dart';
 import 'package:extensions_plus/extensions_plus.dart';
 

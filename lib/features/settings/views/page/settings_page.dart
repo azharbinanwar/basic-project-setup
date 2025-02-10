@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:basic_project_template/features/settings/views/widgets/setting_tile.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:extensions_plus/extensions_plus.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:basic_project_template/config/routes/routes.gr.dart';
 import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/core/services/services/package_info/package_info_service.dart';
-import 'package:basic_project_template/features/settings/presentation/widgets/setting_tile.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 @RoutePage(name: 'SettingsEmptyRoute')

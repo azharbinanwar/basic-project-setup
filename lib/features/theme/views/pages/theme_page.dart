@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:basic_project_template/core/card/my_card.dart';
+import 'package:basic_project_template/features/theme/data/models/theme_model.dart';
+import 'package:basic_project_template/features/theme/views/bloc/theme_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/features/theme/data/data_sources/themes.dart';
-import 'package:basic_project_template/features/theme/domain/entities/theme_entity.dart';
-import 'package:basic_project_template/features/theme/presentation/bloc/theme_cubit.dart';
 
 @RoutePage()
 class ThemePage extends StatelessWidget {
@@ -29,10 +29,10 @@ class ThemePage extends StatelessWidget {
             children: List.generate(
               AppThemeData.themes.length,
               (index) {
-                return BlocBuilder<ThemeCubit, ThemeEntity>(
+                return BlocBuilder<ThemeCubit, ThemeModel>(
                   bloc: themeCubit,
                   builder: (context, _) {
-                    final ThemeEntity theme = AppThemeData.themes[index];
+                    final ThemeModel theme = AppThemeData.themes[index];
                     return ListTile(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
                       trailing: themeCubit.state.themeMode == theme.themeMode ? const Icon(Icons.check) : null,
