@@ -6,11 +6,11 @@ class AppThemeData {
   static List<ThemeModel> get themes {
     return [
       const ThemeModel(
-        name: AppStrings.off,
+        name: AppStrings.light,
         themeMode: ThemeMode.light,
       ),
       const ThemeModel(
-        name: AppStrings.on,
+        name: AppStrings.dark,
         themeMode: ThemeMode.dark,
       ),
       const ThemeModel(

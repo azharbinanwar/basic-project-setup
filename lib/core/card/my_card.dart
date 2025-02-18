@@ -133,7 +133,7 @@ class _MyDefaultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     /// go with passed other else go with conditional one
     final Color? cardColor = color ?? (type == _MyCardType.primary ? context.primary.withValues(alpha: 255 * 0.05) : null);
-    Border? newBorder = border ?? (_MyCardType.outline == type ? Border.all(color: Colors.grey.withValues(alpha: 255 * 0.16)) : null);
+    Border? newBorder = border ?? (_MyCardType.outline == type ? Border.all(color: context.outlineVariant.withAlpha(50)) : null);
     return Padding(
       padding: margin,
       child: InkWell(

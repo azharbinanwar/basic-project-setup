@@ -101,7 +101,7 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
                         LocaleModel item = locales[index];
                         bool isSelected = context.locale == item.locale;
                         return SettingTile(
-                          // padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+                          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                           onTap: () => context.setLocale(item.locale),
                           leading: item.flag.isNotEmpty
                               ? AppImage.svg(item.flag, height: 24.0, borderRadius: BorderRadius.circular(4.0))
@@ -115,10 +115,11 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
                     ),
                     const SizedBox(height: 80.0),
                     Text(
-                      AppStrings.youCanChangeTheseSettingsAnyTimeInTheSettingMenu,
-                      style: context.bodySmall,
+                      AppStrings.youCanChangeTheseSettingsAnyTimeInTheSettingMenu.tr(),
+                      style: context.bodyMedium,
                       textAlign: TextAlign.center,
                     ).center(),
+                    const SizedBox(height: 12.0),
                     AppButton(onPressed: () => context.router.replaceAll([HomeRoute()]), child: Text(context.tr(AppStrings.done))),
                   ],
                 ),
