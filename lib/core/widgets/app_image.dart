@@ -109,6 +109,7 @@ class AppImage extends StatelessWidget {
     final Color? color,
     final BoxFit? fit,
     final EdgeInsets? padding,
+    final BorderRadius? borderRadius,
   }) : _child = _SvgAssets(
           assetsName,
           width: width,
@@ -116,6 +117,7 @@ class AppImage extends StatelessWidget {
           color: color,
           fit: fit,
           padding: padding,
+          borderRadius: borderRadius,
         );
 
   @override
@@ -333,6 +335,7 @@ class _SvgAssets extends StatelessWidget {
   final Color? color;
   final BoxFit fit;
   final EdgeInsets? padding;
+  final BorderRadius borderRadius;
 
   const _SvgAssets(
     this.assetName, {
@@ -341,19 +344,24 @@ class _SvgAssets extends StatelessWidget {
     this.color,
     final BoxFit? fit,
     this.padding,
+    final BorderRadius? borderRadius,
   })  : fit = fit ?? BoxFit.contain,
+        borderRadius = borderRadius ?? BorderRadius.zero,
         super();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: padding ?? EdgeInsets.zero,
-      child: SvgPicture.asset(
-        assetName,
-        width: width,
-        height: height,
-        colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
-        fit: fit,
+    return ClipRRect(
+      borderRadius: borderRadius,
+      child: Padding(
+        padding: padding ?? EdgeInsets.zero,
+        child: SvgPicture.asset(
+          assetName,
+          width: width,
+          height: height,
+          colorFilter: color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+          fit: fit,
+        ),
       ),
     );
   }

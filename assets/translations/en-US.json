@@ -1,119 +1,91 @@
 {
-  "welcome": "Welcome",
-  "language": "Language",
-  "darkMode": "Dark Mode",
-  "system": "System",
+  "welcomeToX": "Welcome to {}",
   "english": "English",
-  "arabic": "العربية"
+  "arabic": "Arabic",
+  "language": "Language",
+  "de-DE": "German",
+  "fr-FR": "French",
+  "en-US": "English",
+  "ar-SA": "Arabic",
+  "off": "Off",
+  "on": "On",
+  "system": "System",
+  "darkMode": "Dark Mode",
+  "settings": "Settings",
+  "dark": "Dark",
+  "light": "Light",
+  "signIn": "Sign In",
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "forgetPassword": "Forget Password",
+  "resetPassword": "Reset Password",
+  "signUp": "Sign Up",
+  "dontHaveAnAccount": "Don't have an account?",
+  "itsGreatToSeeYouAgain": "It's great to see you again!",
+  "emailIsRequired": "Email is required",
+  "pleaseEnterAValidEmail": "Please enter a valid email",
+  "passwordIsRequired": "Password is required",
+  "passwordMustBeAtLeastXCharacters": "Password must be at least X characters",
+  "nameIsRequired": "Name is required",
+  "nameMustBeAtLeastXCharacters": "Name must be at least X characters",
+  "phoneIsRequired": "Phone is required",
+  "pleaseEnterAValidPhoneNumber": "Please enter a valid phone number",
+  "allInOneMedicalHealth": "All-in-One Medical Health",
+  "forgotPasswordScreenTitle": "Forgot Password",
+  "enterEmailToRecover": "Enter your email to recover",
+  "verifyYourMail": "Verify Your Mail",
+  "weSent6Digit": "We sent a 6-digit code",
+  "languageShort": "Lang",
+  "pleaseEnterNewPassword": "Please enter new password",
+  "verify": "Verify",
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
+  "appIntroTitle1": "Welcome to AppX!",
+  "appIntroTitle2": "Track Your Health",
+  "appIntroTitle3": "Stay Connected",
+  "appIntroTitle4": "Get Started",
+  "appIntroDescription1": "A new way to manage your health effortlessly.",
+  "appIntroDescription2": "Monitor and track your medical history.",
+  "appIntroDescription3": "Stay connected with healthcare professionals.",
+  "appIntroDescription4": "Start your journey with AppX now!",
+  "skip": "Skip",
+  "next": "Next",
+  "getStarted": "Get Started",
+  "newAccount": "New Account",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "dateOfBirth": "Date of Birth",
+  "selectYourGender": "Select Your Gender",
+  "male": "Male",
+  "female": "Female",
+  "mobileNumber": "Mobile Number",
+  "email": "Email",
+  "agreeToTheTermsAndConditions": "I agree to the terms and conditions",
+  "emailMeHealthTips": "Email me health tips",
+  "alreadyHaveAnAccount": "Already have an account?",
+  "chooseDate": "Choose Date",
+  "termsAndConditions": "Terms and Conditions",
+  "allowYourLocation": "Allow Your Location",
+  "weWillAccessYourLocationMessage": "We need your location for better service",
+  "skipForNow": "Skip for now",
+  "verifyYourAccount": "Verify Your Account",
+  "enterYourXDigitCodeSentToYourPhone": "Enter the X-digit code sent to your phone",
+  "resendCode": "Resend Code",
+  "createYourPasscode": "Create Your Passcode",
+  "createYourPasscodeDescription": "Secure your account with a passcode",
+  "createNewFamilyAccountMessage": "Create a new family account",
+  "enterYourBreadwinnerEmail": "Enter your guardian's email",
+  "sendRequest": "Send Request",
+  "accept": "Accept",
+  "enterYourPasscode": "Enter Your Passcode",
+  "welcome": "Welcome",
+  "loginWithAnotherWay": "Login with another method",
+  "healthEducation": "Health Education",
+  "seeAll": "See All",
+  "retry": "Retry",
+  "home": "Home",
+  "done": "Done",
+  "chooseLanguage": "Choose Language",
+  "chooseTheme": "Choose Theme",
+  "youCanChangeTheseSettingsAnyTimeInTheSettingMenu": "You can change these settings any time in the setting menu"
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

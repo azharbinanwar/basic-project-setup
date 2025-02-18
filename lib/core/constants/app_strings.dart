@@ -1,6 +1,6 @@
 class AppStrings {
   static const appName = 'Flutter App';
-  static const welcomeToApp = 'Welcome to $appName';
+  static const welcomeToX = 'welcomeToX';
   static const english = 'english';
   static const arabic = 'arabic';
   static const language = 'language';
@@ -10,6 +10,7 @@ class AppStrings {
   static const darkMode = 'darkMode';
   static const settings = 'settings';
   static const dark = 'dark';
+  static const light = 'light';
   static const signIn = 'signIn';
   static const emailAddress = 'emailAddress';
   static const password = 'password';
@@ -72,8 +73,6 @@ class AppStrings {
   static const createNewFamilyAccountMessage = 'createNewFamilyAccountMessage';
   static const enterYourBreadwinnerEmail = 'enterYourBreadwinnerEmail';
   static const sendRequest = 'sendRequest';
-
-  // new
   static const accept = 'accept';
   static const enterYourPasscode = 'enterYourPasscode';
   static const welcome = 'welcome';
@@ -82,4 +81,8 @@ class AppStrings {
   static const seeAll = 'seeAll';
   static const retry = 'retry';
   static const home = 'Home';
+  static const done = 'done';
+  static var chooseLanguage = 'chooseLanguage';
+  static var chooseTheme = 'chooseTheme';
+  static const youCanChangeTheseSettingsAnyTimeInTheSettingMenu = 'youCanChangeTheseSettingsAnyTimeInTheSettingMenu';
 }

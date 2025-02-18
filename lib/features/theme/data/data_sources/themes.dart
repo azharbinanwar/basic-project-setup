@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/features/theme/data/models/theme_model.dart';
+import 'package:flutter/material.dart';
 
 class AppThemeData {
   static List<ThemeModel> get themes {
@@ -19,6 +19,12 @@ class AppThemeData {
       ),
     ];
   }
+
+  static ThemeModel get dark => themes.firstWhere((t) => t.themeMode == ThemeMode.dark);
+
+  static ThemeModel get light => themes.firstWhere((t) => t.themeMode == ThemeMode.light);
+
+  static ThemeModel get system => themes.firstWhere((t) => t.themeMode == ThemeMode.system);
 
   static ThemeModel get defaultTheme => themes.first;
 

@@ -10,6 +10,7 @@ class AppRouter extends RootStackRouter {
   /// make all strings private because we don't need to access them outside of this file
   /// welcome
   static const _initialLocalization = '/initial-localization';
+  static const _initialConfig = '/initial-config';
 
   /// auth
   // static const String _login = '/login';
@@ -47,6 +48,7 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: WelcomeRoute.page, initial: true),
         AutoRoute(page: InitialLocalizationRoute.page, path: _initialLocalization),
+        AutoRoute(page: InitialConfigRoute.page, path: _initialConfig),
         AutoRoute(page: HomeRoute.page, path: _home),
 
         /// settings - nested routes
