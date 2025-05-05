@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
@@ -35,12 +34,18 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
   @override
   void initState() {
     super.initState();
-    String? languageCode = Platform.localeName.split('_').firstOrNull;
+
+    String? languageCode = Intl
+        .getCurrentLocale()
+        .split('_')
+        .firstOrNull;
     locales.addAll([...sl<LocalizationsCubit>().state]);
 
     if (languageCode != null) {
       languageCode = languageCode.toLowerCase();
-      LocaleModel? mobileLocale = locales.firstWhereOrNull((element) => element.locale.languageCode == languageCode);
+      final LocaleModel? mobileLocale = locales.firstWhereOrNull(
+            (element) => element.locale.languageCode == languageCode,
+      );
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mobileLocale != null) context.setLocale(mobileLocale.locale);
       });
@@ -98,16 +103,16 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
                       primary: false,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
-                        LocaleModel item = locales[index];
-                        bool isSelected = context.locale == item.locale;
+                        final LocaleModel item = locales[index];
+                        final bool isSelected = context.locale == item.locale;
                         return SettingTile(
                           padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                           onTap: () => context.setLocale(item.locale),
                           leading: item.flag.isNotEmpty
                               ? AppImage.svg(item.flag, height: 24.0, borderRadius: BorderRadius.circular(4.0))
-                              : SizedBox(width: 24 + 6),
+                              : const SizedBox(width: 24 + 6),
                           title: item.label.tr(),
-                          trailing: isSelected ? Icon(LucideIcons.check, color: context.primary) : SizedBox.shrink(),
+                          trailing: isSelected ? Icon(LucideIcons.check, color: context.primary) : const SizedBox.shrink(),
                           // background: isSelected ? context.primary.withAlpha(25) : Colors.transparent,
                         );
                       },
@@ -120,7 +125,8 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
                       textAlign: TextAlign.center,
                     ).center(),
                     const SizedBox(height: 12.0),
-                    AppButton(onPressed: () => context.router.replaceAll([HomeRoute()]), child: Text(context.tr(AppStrings.done))),
+                    AppButton(
+                        onPressed: () => context.router.replaceAll([const HomeRoute()]), child: Text(context.tr(AppStrings.done))),
                   ],
                 ),
               ],

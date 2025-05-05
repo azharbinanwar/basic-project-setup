@@ -125,15 +125,15 @@ class _MyDefaultCard extends StatelessWidget {
     this.border,
   })  : borderRadius = borderRadius ?? BorderRadius.circular(12.0),
         decoration = decoration ?? const BoxDecoration(),
-        padding = padding ?? const EdgeInsets.all(0),
-        margin = margin ?? const EdgeInsets.all(0),
+        padding = padding ?? EdgeInsets.zero,
+        margin = margin ?? EdgeInsets.zero,
         elevation = elevation ?? 8.0;
 
   @override
   Widget build(BuildContext context) {
     /// go with passed other else go with conditional one
     final Color? cardColor = color ?? (type == _MyCardType.primary ? context.primary.withValues(alpha: 255 * 0.05) : null);
-    Border? newBorder = border ?? (_MyCardType.outline == type ? Border.all(color: context.outlineVariant.withAlpha(50)) : null);
+    final Border? newBorder = border ?? (_MyCardType.outline == type ? Border.all(color: context.outlineVariant.withAlpha(50)) : null);
     return Padding(
       padding: margin,
       child: InkWell(

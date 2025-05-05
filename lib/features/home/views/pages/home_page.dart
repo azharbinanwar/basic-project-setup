@@ -14,11 +14,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppStrings.home),
+        title: const Text(AppStrings.home),
         actions: [
           IconButton(
-            onPressed: () => context.pushRoute(SettingsRoute()),
-            icon: Icon(LucideIcons.settings),
+            onPressed: () => context.pushRoute(const SettingsRoute()),
+            icon: const Icon(LucideIcons.settings),
           )
         ],
       ),

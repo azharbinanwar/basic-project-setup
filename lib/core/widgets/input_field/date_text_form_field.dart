@@ -29,13 +29,13 @@ class _AppTextFormFieldDateState extends State<_AppTextFormFieldDate> {
       readOnly: true,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
-        prefixIcon: widget.prefixIcon ?? Icon(Icons.calendar_month_sharp),
+        prefixIcon: widget.prefixIcon ?? const Icon(Icons.calendar_month_sharp),
         hintText: widget.hintText,
       ),
       onTap: () {
         context.showAppGeneralDialog(
           title: context.tr(AppStrings.chooseDate),
-          child: Text('Add your date picker'),
+          child: const Text('Add your date picker'),
         );
       },
     );

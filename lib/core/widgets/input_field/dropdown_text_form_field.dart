@@ -30,7 +30,7 @@ class _DropDownTextFormField extends StatelessWidget {
           items: List.generate(
             items.length,
             (i) {
-              var item = items[i];
+              final item = items[i];
               return DropdownMenuItem<String>(
                 value: item.value,
                 child: Container(

@@ -29,15 +29,16 @@ class LocalizationPage extends StatelessWidget {
             separatorBuilder: (_, __) => const SizedBox(height: 8.0),
             padding: const EdgeInsets.all(16.0),
             itemBuilder: (_, index) {
-              LocaleModel item = items[index];
-              bool isSelected = context.locale == item.locale;
+              final LocaleModel item = items[index];
+              final bool isSelected = context.locale == item.locale;
               return SettingTile(
                 padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                 onTap: () => context.setLocale(item.locale),
-                leading:
-                    item.flag.isNotEmpty ? AppImage.svg(item.flag, height: 24.0, borderRadius: BorderRadius.circular(4.0)) : SizedBox(width: 24 + 6),
+                leading: item.flag.isNotEmpty
+                    ? AppImage.svg(item.flag, height: 24.0, borderRadius: BorderRadius.circular(4.0))
+                    : const SizedBox(width: 24 + 6),
                 title: item.label.tr(),
-                trailing: isSelected ? Icon(LucideIcons.check, color: context.primary) : SizedBox.shrink(),
+                trailing: isSelected ? Icon(LucideIcons.check, color: context.primary) : const SizedBox.shrink(),
                 background: isSelected ? context.primary.withAlpha(25) : Colors.transparent,
               );
             },

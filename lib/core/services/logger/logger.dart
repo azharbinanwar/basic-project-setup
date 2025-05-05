@@ -9,8 +9,8 @@ class _CustomLogger extends LogPrinter {
 
   @override
   List<String> log(LogEvent event) {
-    String? emoji = PrettyPrinter.defaultLevelEmojis[event.level];
-    AnsiColor? color = PrettyPrinter.defaultLevelColors[event.level];
+    final String? emoji = PrettyPrinter.defaultLevelEmojis[event.level];
+    final AnsiColor? color = PrettyPrinter.defaultLevelColors[event.level];
     if (className == null) return [color!('$emoji ${event.message}')];
     return [color!('$emoji $className - ${event.message}')];
   }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:basic_project_template/core/services/storage/storage/storage_service.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class FlutterSecureStorageService<T> extends StorageService {
   final FlutterSecureStorage _storage = const FlutterSecureStorage();

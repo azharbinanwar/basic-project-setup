@@ -32,8 +32,8 @@ class AppDatabaseService {
     Log.i(runtimeType, 'initializing database');
 
     /// Get the device's documents directory
-    String documentsDirectory = await getDatabasesPath();
-    String path = join(documentsDirectory, _db);
+    final String documentsDirectory = await getDatabasesPath();
+    final String path = join(documentsDirectory, _db);
 
     /// Open and return the newly created database
     return await openDatabase(

@@ -34,7 +34,7 @@ class _WelcomePageState extends State<WelcomePage> {
         children: [
           AppImage.asset(Assets.images.appLogo.path, height: 100.0),
           const SizedBox(height: 20.0),
-          Text(AppStrings.welcomeToX.tr(args: [AppStrings.appName]), style: TextStyle(fontSize: 20.0)).center(),
+          Text(AppStrings.welcomeToX.tr(args: [AppStrings.appName]), style: const TextStyle(fontSize: 20.0)).center(),
         ],
       ).center(),
     );

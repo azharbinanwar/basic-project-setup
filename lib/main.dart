@@ -1,10 +1,10 @@
+import 'package:basic_project_template/app.dart';
+import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/features/localization/views/bloc/localizations_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:basic_project_template/app.dart';
-import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
@@ -32,7 +32,7 @@ Future<void> main() async {
   await configureDependencies();
 
   /// setup language
-  LocalizationsCubit localizationCubit = sl<LocalizationsCubit>()..init();
+  final LocalizationsCubit localizationCubit = sl<LocalizationsCubit>()..init();
 
   /// initialize hydrated bloc
   HydratedBloc.storage = await HydratedStorage.build(

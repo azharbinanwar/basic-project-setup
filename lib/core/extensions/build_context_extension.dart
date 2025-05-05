@@ -14,7 +14,7 @@ extension BuildContextEntension<T> on BuildContext {
             child: child,
           ),
           child: MyCard.outline(
-            padding: EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(12.0),
             color: primaryContainer.withAlpha(50),
             child: Text(message, style: titleSmall),
           ),

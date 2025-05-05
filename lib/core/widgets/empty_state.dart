@@ -1,7 +1,7 @@
 import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:extensions_plus/extensions_plus.dart';
+import 'package:flutter/material.dart';
 
 class EmptyState extends StatelessWidget {
   final Widget _child;

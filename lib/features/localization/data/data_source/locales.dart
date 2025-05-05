@@ -7,19 +7,19 @@ import 'package:injectable/injectable.dart';
 class LocalesHolder {
   List<LocaleModel> get getLocales {
     // Retrieve all flag paths from assets
-    List<String> flagPaths = Assets.flags.values;
+    final List<String> flagPaths = Assets.flags.values;
 
-    List<LocaleModel> locales = [];
+    final List<LocaleModel> locales = [];
 
     for (String path in flagPaths) {
       // Extract the locale value from the file path, e.g., ar-SA
-      String localeValue = path.split('/').last.split('.').first;
-      String flagPath = 'assets/flags/$localeValue.svg';
+      final String localeValue = path.split('/').last.split('.').first;
+      final String flagPath = 'assets/flags/$localeValue.svg';
 
       // Extract the locale and country code
-      String locale = localeValue.split('-').first; // e.g., ar
-      String countryCode = localeValue.split('-').last; // e.g., SA
-      String label = localeValue; // Use locale value as label
+      final String locale = localeValue.split('-').first; // e.g., ar
+      final String countryCode = localeValue.split('-').last; // e.g., SA
+      final String label = localeValue; // Use locale value as label
 
       // Add the locale model to the list
       locales.add(LocaleModel(

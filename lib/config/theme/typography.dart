@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:basic_project_template/gen/fonts.gen.dart';
+import 'package:flutter/material.dart';
 
 class Typography {
   static TextTheme get light => const TextTheme(

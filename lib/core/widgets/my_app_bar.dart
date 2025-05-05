@@ -123,7 +123,7 @@ class _DefaultAppbar extends StatelessWidget {
           AutoLeadingButton(
             builder: (context, LeadingType leadingType, _) {
               return IconButton(
-                icon: Icon(Icons.arrow_back_ios),
+                icon: const Icon(Icons.arrow_back_ios),
                 onPressed: () {
                   /// we can override this function as per our requirements
                   if (leadingType == LeadingType.back) {

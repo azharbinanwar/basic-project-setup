@@ -16,7 +16,7 @@ class ThemeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = item.themeMode == ThemeMode.dark ? ThemeDark().themeData : ThemeLight().themeData;
+    final ThemeData themeData = item.themeMode == ThemeMode.dark ? ThemeDark().themeData : ThemeLight().themeData;
 
     if (item.themeMode == ThemeMode.system) {
       return Stack(
@@ -67,14 +67,16 @@ class _ThemeItem extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           color: context.scaffoldBackgroundColor,
-                          border: selected ? Border.all(color: ctx.primary, width: 3) : Border.all(color: Colors.transparent, width: 3),
+                          border: selected
+                              ? Border.all(color: ctx.primary, width: 3)
+                              : Border.all(color: Colors.transparent, width: 3),
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Column(
                           spacing: 16.0,
                           children: [
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,7 +87,7 @@ class _ThemeItem extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 12.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 12.0),
                               child: Column(
                                 spacing: 8.0,
                                 children: [
@@ -93,7 +95,8 @@ class _ThemeItem extends StatelessWidget {
                                     height: 24,
                                     width: 24,
                                     decoration: BoxDecoration(color: context.primary, borderRadius: BorderRadius.circular(4.0)),
-                                    child: FittedBox(child: AppImage.svg(Assets.svgs.appOutlineLogo, color: context.onPrimary)).center(),
+                                    child: FittedBox(child: AppImage.svg(Assets.svgs.appOutlineLogo, color: context.onPrimary))
+                                        .center(),
                                   ),
                                   Container(
                                     height: 30,
@@ -118,16 +121,15 @@ class _ThemeItem extends StatelessWidget {
                                     spacing: 3,
                                     children: List.generate(
                                       3,
-                                          (index) =>
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color: context.cardColor,
-                                              borderRadius: BorderRadius.circular(2),
-                                              border: Border.all(color: context.outlineVariant, width: 0.5),
-                                            ),
-                                            height: 14,
-                                            width: double.infinity,
-                                          ).expanded(),
+                                      (index) => Container(
+                                        decoration: BoxDecoration(
+                                          color: context.cardColor,
+                                          borderRadius: BorderRadius.circular(2),
+                                          border: Border.all(color: context.outlineVariant, width: 0.5),
+                                        ),
+                                        height: 14,
+                                        width: double.infinity,
+                                      ).expanded(),
                                     ),
                                   ),
                                   Container(
