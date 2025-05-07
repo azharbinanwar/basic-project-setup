@@ -1,56 +1,126 @@
-import 'package:basic_project_template/gen/fonts.gen.dart';
-import 'package:flutter/material.dart';
+part of 'app_theme.dart';
 
-class Typography {
-  static TextTheme get light => const TextTheme(
-        displayLarge: TextStyle(fontSize: 57, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        displayMedium: TextStyle(fontSize: 45, fontWeight: FontWeight.w300, fontFamily: FontFamily.outfit),
-        displaySmall: TextStyle(fontSize: 36, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
+/// Typography styles for the application
+class _Typography {
+  /// Creates dark theme text styles
+  TextTheme get textTheme {
+    return TextTheme(
+      // Display styles
+      displayLarge: TextStyle(
+        fontSize: _TypographyConst.displayLarge,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
+      displayMedium: TextStyle(
+        fontSize: _TypographyConst.displayMedium,
+        fontWeight: FontWeight.w300,
+        fontFamily: fontFamily,
+      ),
+      displaySmall: TextStyle(
+        fontSize: _TypographyConst.displaySmall,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
 
-        ///
-        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        headlineMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
+      // Headline styles
+      headlineLarge: TextStyle(
+        fontSize: _TypographyConst.headlineLarge,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: _TypographyConst.headlineMedium,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
+      headlineSmall: TextStyle(
+        fontSize: _TypographyConst.headlineSmall,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
 
-        ///
-        titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
-        titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
+      // Title styles
+      titleLarge: TextStyle(
+        fontSize: _TypographyConst.titleLarge,
+        fontWeight: _TypographyConst.weightMedium,
+        fontFamily: fontFamily,
+      ),
+      titleMedium: TextStyle(
+        fontSize: _TypographyConst.titleMedium,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
+      titleSmall: TextStyle(
+        fontSize: _TypographyConst.titleSmall,
+        fontWeight: _TypographyConst.weightMedium,
+        fontFamily: fontFamily,
+      ),
 
-        ///
-        labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
-        labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
-        labelSmall: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
+      // Label styles
+      labelLarge: TextStyle(
+        fontSize: _TypographyConst.labelLarge,
+        fontWeight: _TypographyConst.weightMedium,
+        fontFamily: fontFamily,
+      ),
+      labelMedium: TextStyle(
+        fontSize: _TypographyConst.labelMedium,
+        fontWeight: _TypographyConst.weightMedium,
+        fontFamily: fontFamily,
+      ),
+      labelSmall: TextStyle(
+        fontSize: _TypographyConst.labelSmall,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
 
-        ///
-        bodyLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-      );
+      // Body styles
+      bodyLarge: TextStyle(
+        fontSize: _TypographyConst.bodyLarge,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: _TypographyConst.bodyMedium,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
+      bodySmall: TextStyle(
+        fontSize: _TypographyConst.bodySmall,
+        fontWeight: _TypographyConst.weightRegular,
+        fontFamily: fontFamily,
+      ),
+    );
+  }
 
-  static TextTheme get dark => const TextTheme(
-        displayLarge: TextStyle(fontSize: 57, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        displayMedium: TextStyle(fontSize: 45, fontWeight: FontWeight.w300, fontFamily: FontFamily.outfit),
-        displaySmall: TextStyle(fontSize: 36, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
+  String get fontFamily => FontFamily.outfit;
+}
 
-        ///
-        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        headlineMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
+class _TypographyConst {
+  // Font weights
+  static const FontWeight weightRegular = FontWeight.w400;
+  static const FontWeight weightMedium = FontWeight.w500;
+  static const FontWeight weightSemiBold = FontWeight.w600;
+  static const FontWeight weightBold = FontWeight.w700;
 
-        ///
-        titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
-        titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
+  // Font sizes
+  static const double displayLarge = 57.0;
+  static const double displayMedium = 45.0;
+  static const double displaySmall = 36.0;
 
-        ///
-        labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
-        labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w500, fontFamily: FontFamily.outfit),
-        labelSmall: TextStyle(fontSize: 11, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
+  static const double headlineLarge = 32.0;
+  static const double headlineMedium = 28.0;
+  static const double headlineSmall = 24.0;
 
-        ///
-        bodyLarge: TextStyle(fontSize: 24, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-        bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, fontFamily: FontFamily.outfit),
-      );
+  // label
+  static const double labelLarge = 14.0;
+  static const double labelMedium = 12.0;
+  static const double labelSmall = 11.0;
+
+  static const double titleLarge = 22.0;
+  static const double titleMedium = 16.0;
+  static const double titleSmall = 14.0;
+
+  static const double bodyLarge = 16.0;
+  static const double bodyMedium = 14.0;
+  static const double bodySmall = 12.0;
 }

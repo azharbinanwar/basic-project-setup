@@ -6,9 +6,9 @@ import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/core/widgets/app_button.dart';
 import 'package:basic_project_template/core/widgets/app_image.dart';
+import 'package:basic_project_template/core/widgets/app_tile.dart';
 import 'package:basic_project_template/features/localization/data/models/locale_model.dart';
 import 'package:basic_project_template/features/localization/views/bloc/localizations_cubit.dart';
-import 'package:basic_project_template/features/settings/views/widgets/setting_tile.dart';
 import 'package:basic_project_template/features/theme/data/data_sources/themes.dart';
 import 'package:basic_project_template/features/theme/data/models/theme_model.dart';
 import 'package:basic_project_template/features/theme/view_models/bloc/theme_cubit.dart';
@@ -18,7 +18,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:extensions_plus/extensions_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 @RoutePage()
 class InitialConfigPage extends StatefulWidget {
@@ -35,16 +35,13 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
   void initState() {
     super.initState();
 
-    String? languageCode = Intl
-        .getCurrentLocale()
-        .split('_')
-        .firstOrNull;
+    String? languageCode = Intl.getCurrentLocale().split('_').firstOrNull;
     locales.addAll([...sl<LocalizationsCubit>().state]);
 
     if (languageCode != null) {
       languageCode = languageCode.toLowerCase();
       final LocaleModel? mobileLocale = locales.firstWhereOrNull(
-            (element) => element.locale.languageCode == languageCode,
+        (element) => element.locale.languageCode == languageCode,
       );
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mobileLocale != null) context.setLocale(mobileLocale.locale);
@@ -98,26 +95,23 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
                     Text(AppStrings.chooseLanguage.tr(), style: context.titleLarge),
                     // Language List
                     const SizedBox(height: 12.0),
-                    ListView.separated(
-                      itemCount: locales.length,
-                      primary: false,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
+                    AppTileGroup(
+                      tiles: List.generate(locales.length, (index) {
                         final LocaleModel item = locales[index];
                         final bool isSelected = context.locale == item.locale;
-                        return SettingTile(
+                        return AppTile(
                           padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                           onTap: () => context.setLocale(item.locale),
                           leading: item.flag.isNotEmpty
                               ? AppImage.svg(item.flag, height: 24.0, borderRadius: BorderRadius.circular(4.0))
                               : const SizedBox(width: 24 + 6),
-                          title: item.label.tr(),
+                          title: Text(item.label.tr()),
                           trailing: isSelected ? Icon(LucideIcons.check, color: context.primary) : const SizedBox.shrink(),
                           // background: isSelected ? context.primary.withAlpha(25) : Colors.transparent,
                         );
-                      },
-                      separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+                      }),
                     ),
+
                     const SizedBox(height: 80.0),
                     Text(
                       AppStrings.youCanChangeTheseSettingsAnyTimeInTheSettingMenu.tr(),
@@ -126,7 +120,8 @@ class _InitialConfigPageState extends State<InitialConfigPage> {
                     ).center(),
                     const SizedBox(height: 12.0),
                     AppButton(
-                        onPressed: () => context.router.replaceAll([const HomeRoute()]), child: Text(context.tr(AppStrings.done))),
+                        onPressed: () => context.router.replaceAll([const HomeRoute()]),
+                        child: Text(context.tr(AppStrings.done))),
                   ],
                 ),
               ],

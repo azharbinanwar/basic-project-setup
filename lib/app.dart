@@ -1,6 +1,5 @@
 import 'package:basic_project_template/config/routes/routes.dart';
-import 'package:basic_project_template/config/theme/theme_dark.dart';
-import 'package:basic_project_template/config/theme/theme_light.dart';
+import 'package:basic_project_template/config/theme/app_theme.dart';
 import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/features/theme/data/models/theme_model.dart';
@@ -38,8 +37,8 @@ class _AppState extends State<App> {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           title: AppStrings.appName,
-          theme: ThemeLight().themeData,
-          darkTheme: ThemeDark().themeData,
+          theme: AppTheme().light,
+          darkTheme: AppTheme().dark,
           routerConfig: _routes.config(navigatorObservers: () => [AppRouteObserver()]),
         );
       },

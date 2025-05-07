@@ -2,14 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:basic_project_template/core/constants/app_strings.dart';
 import 'package:basic_project_template/core/di/service_locator.dart';
 import 'package:basic_project_template/core/widgets/app_image.dart';
+import 'package:basic_project_template/core/widgets/app_tile.dart';
 import 'package:basic_project_template/features/localization/data/models/locale_model.dart';
 import 'package:basic_project_template/features/localization/views/bloc/localizations_cubit.dart';
-import 'package:basic_project_template/features/settings/views/widgets/setting_tile.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:extensions_plus/extensions_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 @RoutePage()
 class LocalizationPage extends StatelessWidget {
@@ -24,24 +24,22 @@ class LocalizationPage extends StatelessWidget {
       body: BlocBuilder<LocalizationsCubit, List<LocaleModel>>(
         bloc: _localizationCubit,
         builder: (context, items) {
-          return ListView.separated(
-            itemCount: items.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+          return AppTileGroup(
             padding: const EdgeInsets.all(16.0),
-            itemBuilder: (_, index) {
+            tiles: List.generate(items.length, (index) {
               final LocaleModel item = items[index];
               final bool isSelected = context.locale == item.locale;
-              return SettingTile(
+              return AppTile(
                 padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
                 onTap: () => context.setLocale(item.locale),
                 leading: item.flag.isNotEmpty
                     ? AppImage.svg(item.flag, height: 24.0, borderRadius: BorderRadius.circular(4.0))
                     : const SizedBox(width: 24 + 6),
-                title: item.label.tr(),
+                title: Text(item.label.tr()),
                 trailing: isSelected ? Icon(LucideIcons.check, color: context.primary) : const SizedBox.shrink(),
                 background: isSelected ? context.primary.withAlpha(25) : Colors.transparent,
               );
-            },
+            }),
           );
         },
       ),

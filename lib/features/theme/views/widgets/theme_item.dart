@@ -1,5 +1,4 @@
-import 'package:basic_project_template/config/theme/theme_dark.dart';
-import 'package:basic_project_template/config/theme/theme_light.dart';
+import 'package:basic_project_template/config/theme/app_theme.dart';
 import 'package:basic_project_template/core/widgets/app_image.dart';
 import 'package:basic_project_template/features/theme/data/models/theme_model.dart';
 import 'package:basic_project_template/gen/assets.gen.dart';
@@ -16,19 +15,19 @@ class ThemeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = item.themeMode == ThemeMode.dark ? ThemeDark().themeData : ThemeLight().themeData;
+    final ThemeData themeData = item.themeMode == ThemeMode.dark ? AppTheme().light : AppTheme().dark;
 
     if (item.themeMode == ThemeMode.system) {
       return Stack(
         children: [
           // Light theme base
-          _ThemeItem(item: item, theme: ThemeLight().themeData, onThemeChanged: onThemeChanged, selected: selected),
+          _ThemeItem(item: item, theme: AppTheme().light, onThemeChanged: onThemeChanged, selected: selected),
 
           // Dark theme overlay with CustomPaint
           ClipPath(
             clipper: DiagonalClipper(),
             clipBehavior: Clip.hardEdge,
-            child: _ThemeItem(item: item, theme: ThemeDark().themeData, onThemeChanged: onThemeChanged, selected: selected),
+            child: _ThemeItem(item: item, theme: AppTheme().dark, onThemeChanged: onThemeChanged, selected: selected),
           ),
         ],
       );

@@ -26,9 +26,16 @@ class AppRouter extends RootStackRouter {
   static const String _home = '/home'; // tab
 
   /// settings
-  static const String _settings = '/settings';
-  static const String _language = 'language';
-  static const String _theme = 'theme';
+  static const _settings = '/settings';
+  static const _language = 'language';
+  static const _theme = 'theme';
+
+  /// help and support
+  static const _faq = 'faq';
+  static const _support = 'support';
+  static const _bugReport = 'bug-report';
+  static const _privacyPolicy = 'privacy-policy';
+  static const _changePassword = 'change-password';
 
   /// help and support
   // static const String _helpAndSupport = '/help-and-support';
@@ -53,12 +60,19 @@ class AppRouter extends RootStackRouter {
 
         /// settings - nested routes
         AutoRoute(
-          page: SettingsEmptyRoute.page,
+          page: SettingsShellRoute.page,
           path: _settings,
           children: [
             AutoRoute(page: SettingsRoute.page, initial: true),
             AutoRoute(page: LocalizationRoute.page, path: _language),
             AutoRoute(page: ThemeRoute.page, path: _theme),
+            AutoRoute(page: PasswordSecurityRoute.page, path: _changePassword),
+
+            // Help & Support
+            AutoRoute(page: FaqRoute.page, path: _faq),
+            AutoRoute(page: ContactSupportRoute.page, path: _support),
+            AutoRoute(page: BugReportRoute.page, path: _bugReport),
+            AutoRoute(page: PrivacyPolicyRoute.page, path: _privacyPolicy),
           ],
         ),
       ];
