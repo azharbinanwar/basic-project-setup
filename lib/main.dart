@@ -15,8 +15,8 @@ Future<void> main() async {
    * Easy localization supports 4 ways to localize your app:
    * So we've be using it on requirement
    * Relying on on method is best approach but we've a little bit different cases
-   * Like in Surah name we're dealing with dynamic String key so we'll translate with Text('suranName').tr())
-   * or context.tr('surahName') with extension
+   * Like in Surah name we're dealing with dynamic String key so we'll translate with Text('SomeName').tr())
+   * or context.tr('SomeName') with extension
    * Text widget
    * Text('title').tr()
    * String
